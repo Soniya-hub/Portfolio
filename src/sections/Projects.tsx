@@ -1,0 +1,211 @@
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ExternalLink } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+
+gsap.registerPlugin(ScrollTrigger);
+
+const projects = [
+  {
+    title: 'Release Management Tool',
+    description:
+      'Internal tool to manage release approvals, replace SharePoint workflows, and improve audit compliance.',
+    tech: ['Spring Boot', 'Hibernate', 'JSP', 'JavaScript', 'REST APIs'],
+    image: '/project_release_tool.jpg',
+    link: '#',
+  },
+  {
+    title: 'Auto Insurance Platform',
+    description:
+      'Full-stack insurance management system with policy tracking and customer workflows.',
+    tech: ['Angular', 'Spring Boot', 'MySQL'],
+    image: '/project_insurance.jpg',
+    link: '#',
+  },
+  {
+    title: 'COVID Report Manager',
+    description: 'Desktop GUI app for patient data entry and fast SQL-backed retrieval.',
+    tech: ['Java', 'SQL', 'GUI'],
+    image: '/project_covid.jpg',
+    link: '#',
+  },
+  {
+    title: 'WordPress Business Website',
+    description:
+      'SEO-optimized business site with responsive design, contact forms, and analytics.',
+    tech: ['WordPress', 'Elementor', 'SEO'],
+    image: '/project_wordpress.jpg',
+    link: '#',
+  },
+];
+
+export default function Projects() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Header animation
+      gsap.fromTo(
+        headerRef.current,
+        { opacity: 0, y: 22 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+          },
+        }
+      );
+
+      // Cards animation
+      const cards = cardsRef.current?.querySelectorAll('.project-card');
+      if (cards) {
+        gsap.fromTo(
+          cards,
+          { opacity: 0, y: 50, rotateZ: -0.5 },
+          {
+            opacity: 1,
+            y: 0,
+            rotateZ: 0,
+            duration: 0.7,
+            stagger: 0.12,
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: 'top 70%',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
+      }
+
+      // Thumbnails animation
+      const thumbnails = cardsRef.current?.querySelectorAll('.project-thumbnail');
+      if (thumbnails) {
+        gsap.fromTo(
+          thumbnails,
+          { scale: 1.04, opacity: 0 },
+          {
+            scale: 1,
+            opacity: 1,
+            duration: 0.6,
+            stagger: 0.1,
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: 'top 65%',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
+      }
+
+      // Tech chips animation
+      const chips = cardsRef.current?.querySelectorAll('.tech-chip');
+      if (chips) {
+        gsap.fromTo(
+          chips,
+          { opacity: 0, x: -10 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.3,
+            stagger: 0.03,
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: 'top 60%',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section
+      ref={sectionRef}
+      id="projects"
+      className="relative w-full bg-navy py-[10vh] px-[7vw]"
+    >
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div ref={headerRef} className="mb-12">
+          <span className="inline-block font-mono text-xs uppercase tracking-[0.12em] text-violet mb-4">
+            Projects
+          </span>
+          <h2 className="font-heading font-bold text-[clamp(32px,3.6vw,48px)] text-foreground mb-4">
+            Selected Work
+          </h2>
+          <p className="text-base text-muted-foreground max-w-md">
+            A few things I&apos;ve built — from enterprise tools to experiments.
+          </p>
+        </div>
+
+        {/* Projects Grid */}
+        <div
+          ref={cardsRef}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+        >
+          {projects.map((project, index) => (
+            <div
+              key={index}
+              className="project-card group bg-card rounded-2xl overflow-hidden card-shadow hover:border-violet/30 border border-transparent transition-all"
+            >
+              {/* Thumbnail */}
+              <div className="relative aspect-[16/10] overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="project-thumbnail w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+
+              {/* Content */}
+              <div className="p-6">
+                <h3 className="font-heading font-semibold text-lg text-foreground mb-2 group-hover:text-violet transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+                  {project.description}
+                </p>
+
+                {/* Tech Chips */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.tech.map((tech, techIndex) => (
+                    <span
+                      key={techIndex}
+                      className="tech-chip px-2.5 py-1 bg-navy-light rounded-md text-xs font-mono text-muted-foreground"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Link Button */}
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="w-full border-violet/30 text-violet hover:bg-violet hover:text-white transition-all"
+                  asChild
+                >
+                  <a href={project.link} target="_blank" rel="noopener noreferrer">
+                    View Project
+                    <ExternalLink className="ml-2 w-4 h-4" />
+                  </a>
+                </Button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
