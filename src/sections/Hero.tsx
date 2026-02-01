@@ -190,7 +190,9 @@ export default function Hero() {
             Full Stack Developer
           </p>
           <p className="word text-base text-muted-foreground max-w-[400px] leading-relaxed">
-            I build scalable backends, responsive frontends, and AI-powered features.
+            Full Stack Developer with 3+ years of experience building Java & Spring Boot
+enterprise applications, modern React frontends, AI-assisted features,
+and professional WordPress websites.
           </p>
         </div>
 
@@ -235,7 +237,7 @@ export default function Hero() {
       {/* Social Links - Bottom Right */}
       <div className="absolute bottom-8 right-[7vw] flex gap-4 z-20">
         <a
-          href="https://github.com"
+          href="https://github.com/Soniya-hub"
           target="_blank"
           rel="noopener noreferrer"
           className="w-10 h-10 flex items-center justify-center rounded-full bg-card border border-border text-muted-foreground hover:text-violet hover:border-violet/50 transition-all"
@@ -243,7 +245,7 @@ export default function Hero() {
           <Github className="w-5 h-5" />
         </a>
         <a
-          href="https://linkedin.com"
+          href="https://www.linkedin.com/in/soniya-varshney-49071a1b8"
           target="_blank"
           rel="noopener noreferrer"
           className="w-10 h-10 flex items-center justify-center rounded-full bg-card border border-border text-muted-foreground hover:text-violet hover:border-violet/50 transition-all"

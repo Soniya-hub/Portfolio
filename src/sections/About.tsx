@@ -9,13 +9,13 @@ const quickFacts = [
   { icon: MapPin, label: 'Location', value: 'India' },
   { icon: GraduationCap, label: 'Education', value: 'B.Tech (Computer Science)' },
   { icon: Briefcase, label: 'Current', value: 'Associate Software Engineer II @ Optum' },
-  { icon: Code, label: 'Focus', value: 'Backend · Frontend · AI/ML' },
+  { icon: Code, label: 'Focus', value: 'Backend · Frontend · AI/ML · WordPress' },
 ];
 
 const interests = [
-  { icon: Brain, label: 'AI' },
-  { icon: Plane, label: 'Travel' },
-  { icon: Palette, label: 'Design' },
+  { icon: Brain, label: 'AI/ML' },
+  { icon: Plane, label: 'System Design' },
+  { icon: Palette, label: 'UI/UX Design' },
 ];
 
 export default function About() {
@@ -147,15 +147,27 @@ export default function About() {
             </h2>
             <div ref={bodyRef} className="space-y-4">
               <p className="text-base text-muted-foreground leading-relaxed">
-                I&apos;m Soniya — a full-stack engineer who enjoys turning complex problems into
-                clean, reliable systems.
+                I'm Soniya — a full-stack developer with 3+ years of experience building
+production-grade enterprise applications and user-focused web solutions.
               </p>
               <p className="text-base text-muted-foreground leading-relaxed">
-                I&apos;ve spent 3+ years building enterprise apps with Java, Spring Boot, and
-                Angular, and I&apos;m now exploring AI/ML integrations that make products smarter.
-              </p>
+  I’ve worked extensively with Java, Spring Boot, and modern frontend frameworks
+  to deliver scalable backend systems, responsive React interfaces, and
+  professionally deployed WordPress websites for real business use cases.
+</p>
+
+<p className="text-base text-muted-foreground leading-relaxed">
+  I’ve also contributed to and supported large-scale enterprise applications
+  used by millions of active users, focusing on reliability, performance,
+  and production stability.
+</p>
+<p className="text-base text-muted-foreground leading-relaxed">
+Currently, I’m exploring AI-assisted features and integrations to enhance
+developer productivity and build smarter application workflows.
+</p>
               <p className="text-base text-muted-foreground leading-relaxed">
-                I care about performance, accessibility, and shipping code that lasts.
+               I care deeply about performance, clean architecture, accessibility, and
+shipping software that lasts.
               </p>
             </div>
           </div>

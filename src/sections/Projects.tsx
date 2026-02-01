@@ -59,7 +59,7 @@ const projects: Project[] = [
   image: '/project_covid.jpg',
   caseStudy: {
     role: 'Java Developer',
-    type: 'Personal Project',
+    type: 'Company Project',
     overview:
       'A desktop application built to efficiently record and retrieve COVID patient data using a Java-based GUI and SQL backend.',
     contributions: [

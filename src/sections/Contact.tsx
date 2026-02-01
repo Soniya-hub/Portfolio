@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
+import emailjs from 'emailjs-com';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,11 +16,13 @@ export default function Contact() {
   const formRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
   const [copied, setCopied] = useState(false);
+  const [sending, setSending] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: '',
   });
+  
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -102,11 +105,33 @@ export default function Contact() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast.success('Message sent! I will get back to you soon.');
-    setFormData({ name: '', email: '', message: '' });
-  };
+ const handleSubmit = (e: React.FormEvent) => {
+  e.preventDefault();
+  setSending(true);
+
+  emailjs
+    .send(
+      'service_rjdbkfj',
+      'template_e1hdmbp',
+      {
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+      },
+      'LH9Z4ZZZyY2ORtqHb'
+    )
+    .then(() => {
+      toast.success('Message sent successfully!');
+      setFormData({ name: '', email: '', message: '' });
+    })
+    .catch((error) => {
+      console.error('EmailJS Error:', error);
+      toast.error('Failed to send message. Please try again.');
+    })
+    .finally(() => {
+      setSending(false);
+    });
+};
 
   return (
     <section
@@ -159,7 +184,7 @@ export default function Contact() {
               </p>
               <div className="flex gap-3">
                 <a
-                  href="https://github.com"
+                  href="https://github.com/Soniya-hub"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 flex items-center justify-center rounded-xl bg-card border border-border text-muted-foreground hover:text-violet hover:border-violet/50 transition-all"
@@ -167,7 +192,7 @@ export default function Contact() {
                   <Github className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/soniya-varshney-49071a1b8"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 flex items-center justify-center rounded-xl bg-card border border-border text-muted-foreground hover:text-violet hover:border-violet/50 transition-all"
@@ -220,13 +245,14 @@ export default function Contact() {
                     required
                   />
                 </div>
-                <Button
-                  type="submit"
-                  className="w-full bg-violet hover:bg-violet-dark text-white py-5 rounded-xl text-sm font-medium transition-all hover:shadow-glow"
-                >
-                  Send Message
-                  <Send className="ml-2 w-4 h-4" />
-                </Button>
+               <Button
+  type="submit"
+  disabled={sending}
+  className="w-full bg-violet hover:bg-violet-dark text-white py-5 rounded-xl text-sm font-medium transition-all hover:shadow-glow disabled:opacity-60"
+>
+  {sending ? 'Sending…' : 'Send Message'}
+  <Send className="ml-2 w-4 h-4" />
+</Button>
               </form>
             </div>
           </div>
