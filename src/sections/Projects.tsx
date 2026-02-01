@@ -5,8 +5,23 @@ import { ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 gsap.registerPlugin(ScrollTrigger);
+type CaseStudy = {
+  role: string;
+  type: string;
+  overview: string;
+  contributions: string[];
+  impact: string;
+};
 
-const projects = [
+type Project = {
+  title: string;
+  description: string;
+  tech: string[];
+  image: string;
+  link?: string;
+  caseStudy?: CaseStudy;
+};
+const projects: Project[] = [ 
  {
   title: 'Release Management Tool',
   description:
@@ -67,7 +82,7 @@ const projects = [
 ];
 
 export default function Projects() {
-  const [activeCaseStudy, setActiveCaseStudy] = useState(null);
+  const [activeCaseStudy, setActiveCaseStudy] = useState<Project | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
