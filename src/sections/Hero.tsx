@@ -212,13 +212,13 @@ export default function Hero() {
         </div>
 
         {/* Pills */}
-        <div
-          ref={pillsRef}
-          className="
-            mt-4 flex gap-3 flex-wrap
-            lg:absolute lg:top-[68vh]
-          "
-        >
+       <div
+  ref={pillsRef}
+  className="
+    mt-4 flex gap-3 flex-wrap
+    lg:absolute lg:top-[60vh]
+  "
+>
           <span className="pill px-4 py-2 bg-card rounded-full text-xs font-mono text-muted-foreground border">
             3+ Years Experience
           </span>
