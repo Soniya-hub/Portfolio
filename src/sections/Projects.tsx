@@ -285,22 +285,22 @@ export default function Projects() {
       </h3>
 
       <p className="text-sm text-muted-foreground mb-4">
-        {activeCaseStudy.caseStudy.type} · {activeCaseStudy.caseStudy.role}
+        {activeCaseStudy.caseStudy?.type} · {activeCaseStudy.caseStudy?.role}
       </p>
 
       <p className="mb-4">
-        {activeCaseStudy.caseStudy.overview}
+        {activeCaseStudy.caseStudy?.overview}
       </p>
 
       <h4 className="font-semibold mb-2">Key Contributions</h4>
       <ul className="list-disc pl-5 space-y-1 mb-4">
-        {activeCaseStudy.caseStudy.contributions.map((item, i) => (
-          <li key={i}>{item}</li>
-        ))}
+       {activeCaseStudy.caseStudy?.contributions.map((item, i) => (
+  <li key={i}>{item}</li>
+))}
       </ul>
 
       <p className="text-sm text-muted-foreground">
-        <strong>Impact:</strong> {activeCaseStudy.caseStudy.impact}
+        <strong>Impact:</strong> {activeCaseStudy.caseStudy?.impact}
       </p>
     </div>
   </div>
