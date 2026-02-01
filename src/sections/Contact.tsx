@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -124,7 +124,7 @@ export default function Contact() {
       toast.success('Message sent successfully!');
       setFormData({ name: '', email: '', message: '' });
     })
-    .catch((error) => {
+ .catch((error: unknown) => {
       console.error('EmailJS Error:', error);
       toast.error('Failed to send message. Please try again.');
     })
