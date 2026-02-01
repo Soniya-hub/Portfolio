@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ExternalLink } from 'lucide-react';
@@ -7,40 +7,67 @@ import { Button } from '@/components/ui/button';
 gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
-  {
-    title: 'Release Management Tool',
-    description:
-      'Internal tool to manage release approvals, replace SharePoint workflows, and improve audit compliance.',
-    tech: ['Spring Boot', 'Hibernate', 'JSP', 'JavaScript', 'REST APIs'],
-    image: '/project_release_tool.jpg',
-    link: '#',
+ {
+  title: 'Release Management Tool',
+  description:
+    'Internal enterprise tool to manage release approvals, replace SharePoint workflows, and improve audit compliance.',
+  tech: ['Java', 'Spring Boot', 'Hibernate', 'React', 'JavaScript', 'REST APIs'],
+  image: '/project_release_tool.jpg',
+  caseStudy: {
+    role: 'Full Stack Developer',
+    type: 'Internal Company Project',
+    overview:
+      'An internal release management system built to automate release approvals, replace manual SharePoint workflows, and ensure audit compliance.',
+    contributions: [
+      'Designed and implemented release approval workflows',
+      'Built role-based access control for different user roles',
+      'Developed REST APIs for release lifecycle management',
+      'Integrated frontend UI with backend services',
+      'Improved release turnaround time and audit traceability',
+    ],
+    impact: 'Reduced manual approvals and improved release governance.',
   },
+},
+ {
+  title: 'Auto Insurance Platform',
+  description:
+    'Enterprise insurance management system with policy lifecycle handling, customer workflows, and admin dashboards.',
+  tech: ['Java', 'JSP', 'MySQL', 'REST APIs'],
+  image: '/project_insurance.jpg',
+  link: 'https://github.com/Soniya-hub/auto-insurance-platform',
+},
   {
-    title: 'Auto Insurance Platform',
-    description:
-      'Full-stack insurance management system with policy tracking and customer workflows.',
-    tech: ['Angular', 'Spring Boot', 'MySQL'],
-    image: '/project_insurance.jpg',
-    link: '#',
+  title: 'COVID Report Manager',
+  description:
+    'Desktop Java GUI application for patient data entry and fast SQL-backed retrieval during COVID case tracking.',
+  tech: ['Java', 'SQL', 'Swing'],
+  image: '/project_covid.jpg',
+  caseStudy: {
+    role: 'Java Developer',
+    type: 'Personal Project',
+    overview:
+      'A desktop application built to efficiently record and retrieve COVID patient data using a Java-based GUI and SQL backend.',
+    contributions: [
+      'Designed Java Swing-based desktop UI',
+      'Implemented CRUD operations using SQL',
+      'Optimized queries for faster patient data retrieval',
+    ],
+    impact:
+      'Enabled faster data entry and lookup during high-volume data scenarios.',
   },
-  {
-    title: 'COVID Report Manager',
-    description: 'Desktop GUI app for patient data entry and fast SQL-backed retrieval.',
-    tech: ['Java', 'SQL', 'GUI'],
-    image: '/project_covid.jpg',
-    link: '#',
-  },
+},
   {
     title: 'WordPress Business Website',
     description:
       'SEO-optimized business site with responsive design, contact forms, and analytics.',
     tech: ['WordPress', 'Elementor', 'SEO'],
     image: '/project_wordpress.jpg',
-    link: '#',
+    link: 'https://www.vamcapital.in/',
   },
 ];
 
 export default function Projects() {
+  const [activeCaseStudy, setActiveCaseStudy] = useState(null);
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
@@ -127,6 +154,17 @@ export default function Projects() {
 
     return () => ctx.revert();
   }, []);
+  useEffect(() => {
+  if (activeCaseStudy) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
+
+  return () => {
+    document.body.style.overflow = '';
+  };
+}, [activeCaseStudy]);
 
   return (
     <section
@@ -190,22 +228,68 @@ export default function Projects() {
                 </div>
 
                 {/* Link Button */}
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="w-full border-violet/30 text-violet hover:bg-violet hover:text-white transition-all"
-                  asChild
-                >
-                  <a href={project.link} target="_blank" rel="noopener noreferrer">
-                    View Project
-                    <ExternalLink className="ml-2 w-4 h-4" />
-                  </a>
-                </Button>
+                {project.caseStudy ? (
+  <Button
+    variant="outline"
+    size="sm"
+    className="w-full border-violet/30 text-violet hover:bg-violet hover:text-white transition-all"
+    onClick={() => setActiveCaseStudy(project)}
+  >
+    Case Study
+  </Button>
+) : (
+  <Button
+    variant="outline"
+    size="sm"
+    className="w-full border-violet/30 text-violet hover:bg-violet hover:text-white transition-all"
+    asChild
+  >
+    <a href={project.link} target="_blank" rel="noopener noreferrer">
+      View Project
+      <ExternalLink className="ml-2 w-4 h-4" />
+    </a>
+  </Button>
+)}
               </div>
             </div>
           ))}
         </div>
       </div>
+      {activeCaseStudy && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
+    <div className="bg-card max-w-2xl w-full rounded-2xl p-6 relative">
+      <button
+        className="absolute top-4 right-4 text-muted-foreground hover:text-foreground"
+        onClick={() => setActiveCaseStudy(null)}
+      >
+        ✕
+      </button>
+
+      <h3 className="text-2xl font-heading font-bold mb-2">
+        {activeCaseStudy.title}
+      </h3>
+
+      <p className="text-sm text-muted-foreground mb-4">
+        {activeCaseStudy.caseStudy.type} · {activeCaseStudy.caseStudy.role}
+      </p>
+
+      <p className="mb-4">
+        {activeCaseStudy.caseStudy.overview}
+      </p>
+
+      <h4 className="font-semibold mb-2">Key Contributions</h4>
+      <ul className="list-disc pl-5 space-y-1 mb-4">
+        {activeCaseStudy.caseStudy.contributions.map((item, i) => (
+          <li key={i}>{item}</li>
+        ))}
+      </ul>
+
+      <p className="text-sm text-muted-foreground">
+        <strong>Impact:</strong> {activeCaseStudy.caseStudy.impact}
+      </p>
+    </div>
+  </div>
+)}
     </section>
   );
 }
