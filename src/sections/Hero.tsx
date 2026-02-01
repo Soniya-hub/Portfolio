@@ -194,7 +194,14 @@ export default function Hero() {
         </p>
 
         {/* CTA */}
-        <div ref={ctaRef} className="mt-6 lg:mt-0 lg:absolute lg:top-[58vh]">
+        <div
+  ref={ctaRef}
+  className="
+    mt-6
+    lg:mt-4
+    lg:absolute lg:top-[50vh]
+  "
+>
           <Button
             onClick={() => scrollToSection('projects')}
             className="bg-violet hover:bg-violet-dark text-white px-6 py-5 rounded-xl text-sm font-medium"
@@ -226,7 +233,7 @@ export default function Hero() {
         ref={imageRef}
         className="
           relative mt-10 mx-auto
-          w-[72vw] h-[72vw] sm:w-[80vw] sm:h-[80vw]
+          w-[80vw] h-[80vw]
           max-w-[360px] max-h-[360px]
           lg:absolute lg:right-[7vw] lg:top-[18vh]
           lg:w-[34vw] lg:h-[34vw]
@@ -245,7 +252,13 @@ export default function Hero() {
     </div>
 
     {/* Social Links */}
-    <div className="absolute bottom-6 right-6 lg:right-[7vw] flex gap-4 z-20">
+    <div
+  className="
+    mt-6 flex justify-center gap-6
+    lg:mt-0 lg:absolute lg:bottom-8 lg:right-[7vw]
+    z-20
+  "
+>
       <a href="https://github.com/Soniya-hub" target="_blank" className="social-icon">
         <Github className="w-5 h-5" />
       </a>
