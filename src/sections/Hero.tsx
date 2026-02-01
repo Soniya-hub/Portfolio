@@ -71,7 +71,7 @@ export default function Hero() {
           trigger: sectionRef.current,
           start: 'top top',
           end: '+=130%',
-          pin: true,
+          pin: window.innerWidth >= 1024,
           scrub: 0.6,
           onLeaveBack: () => {
             // Reset all elements to visible when scrolling back to top
@@ -137,122 +137,121 @@ export default function Hero() {
   };
 
   return (
-    <section
-      ref={sectionRef}
-      id="hero"
-      className="relative w-full h-screen bg-navy overflow-hidden"
+  <section
+    ref={sectionRef}
+    id="hero"
+    className="relative w-full min-h-[90vh] lg:h-screen bg-navy overflow-hidden"
+  >
+    {/* Background gradient */}
+    <div className="absolute inset-0 bg-gradient-radial" />
+
+    {/* Navigation */}
+    <nav
+      ref={navRef}
+      className="absolute top-0 left-0 right-0 h-[72px] z-50 flex items-center justify-between px-6 lg:px-[4vw]"
     >
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-radial" />
+      <div className="font-heading font-bold text-2xl text-foreground tracking-tight">
+        SV.
+      </div>
+      <div className="flex items-center gap-5 lg:gap-7">
+        <button onClick={() => scrollToSection('projects')} className="nav-link">
+          Work
+        </button>
+        <button onClick={() => scrollToSection('about')} className="nav-link">
+          About
+        </button>
+        <button onClick={() => scrollToSection('contact')} className="nav-link">
+          Contact
+        </button>
+      </div>
+    </nav>
 
-      {/* Navigation */}
-      <nav
-        ref={navRef}
-        className="absolute top-0 left-0 right-0 h-[72px] z-50 flex items-center justify-between px-[4vw]"
+    {/* Content Wrapper */}
+    <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center h-full pt-28 lg:pt-0">
+      
+      {/* LEFT CONTENT */}
+      <div
+        ref={headlineRef}
+        className="
+          px-6 lg:px-0
+          w-full lg:w-[44vw] max-w-[600px]
+          lg:absolute lg:left-[7vw] lg:top-[26vh]
+        "
       >
-        <div className="font-heading font-bold text-2xl text-foreground tracking-tight">
-          SV.
-        </div>
-        <div className="flex items-center gap-7">
-          <button
-            onClick={() => scrollToSection('projects')}
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Work
-          </button>
-          <button
-            onClick={() => scrollToSection('about')}
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            About
-          </button>
-          <button
-            onClick={() => scrollToSection('contact')}
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Contact
-          </button>
-        </div>
-      </nav>
+        <h1 className="font-heading font-bold text-foreground leading-[0.95] mb-4">
+          <span className="word block text-[clamp(36px,6vw,64px)]">Soniya</span>
+          <span className="word block text-[clamp(36px,6vw,64px)]">Varshney</span>
+        </h1>
 
-      {/* Content */}
-      <div className="relative z-10 h-full flex items-center">
-        {/* Left: Headline */}
-        <div
-          ref={headlineRef}
-          className="absolute left-[7vw] top-[26vh] w-[44vw] max-w-[600px]"
-        >
-          <h1 className="font-heading font-bold text-foreground leading-[0.95] mb-4">
-            <span className="word block text-[clamp(36px,4.5vw,64px)]">Soniya</span>
-            <span className="word block text-[clamp(36px,4.5vw,64px)]">Varshney</span>
-          </h1>
-          <p className="word text-xl md:text-2xl text-violet font-medium mb-3">
-            Full Stack Developer
-          </p>
-          <p className="word text-base text-muted-foreground max-w-[400px] leading-relaxed">
-            Full Stack Developer with 3+ years of experience building Java & Spring Boot
-enterprise applications, modern React frontends, AI-assisted features,
-and professional WordPress websites.
-          </p>
-        </div>
+        <p className="word text-lg md:text-2xl text-violet font-medium mb-3">
+          Full Stack Developer
+        </p>
 
-        {/* CTA Button */}
-        <div ref={ctaRef} className="absolute left-[7vw] top-[58vh]">
+        <p className="word text-base text-muted-foreground max-w-[420px] leading-relaxed">
+          Full Stack Developer with 3+ years of experience building Java & Spring Boot
+          enterprise applications, modern React frontends, AI-assisted features,
+          and professional WordPress websites.
+        </p>
+
+        {/* CTA */}
+        <div ref={ctaRef} className="mt-6 lg:mt-0 lg:absolute lg:top-[58vh]">
           <Button
             onClick={() => scrollToSection('projects')}
-            className="bg-violet hover:bg-violet-dark text-white px-6 py-5 rounded-xl text-sm font-medium transition-all hover:shadow-glow"
+            className="bg-violet hover:bg-violet-dark text-white px-6 py-5 rounded-xl text-sm font-medium"
           >
             View My Work
             <ChevronDown className="ml-2 w-4 h-4" />
           </Button>
         </div>
 
-        {/* Social Proof Pills */}
-        <div ref={pillsRef} className="absolute left-[7vw] top-[68vh] flex gap-3">
-          <span className="pill px-4 py-2 bg-card rounded-full text-xs font-mono text-muted-foreground border border-border">
+        {/* Pills */}
+        <div
+          ref={pillsRef}
+          className="
+            mt-4 flex gap-3 flex-wrap
+            lg:absolute lg:top-[68vh]
+          "
+        >
+          <span className="pill px-4 py-2 bg-card rounded-full text-xs font-mono text-muted-foreground border">
             3+ Years Experience
           </span>
           <span className="pill px-4 py-2 bg-violet/10 rounded-full text-xs font-mono text-violet border border-violet/30">
             Open to Opportunities
           </span>
         </div>
+      </div>
 
-        {/* Right: Hero Image Card */}
-        <div
-          ref={imageRef}
-          className="absolute right-[7vw] top-[18vh] w-[34vw] h-[34vw] min-w-[280px] min-h-[280px] max-w-[480px] max-h-[480px]"
-        >
-          <div className="relative w-full h-full bg-card rounded-2xl card-shadow overflow-hidden">
-            {/* Status dot */}
-            <div className="absolute top-4 left-4 w-3 h-3 bg-violet rounded-full animate-pulse-subtle z-10" />
-            <img
-              src="/hero_portrait.jpg"
-              alt="Soniya Varshney"
-              className="w-full h-full object-cover"
-            />
-          </div>
+      {/* RIGHT IMAGE */}
+      <div
+        ref={imageRef}
+        className="
+          relative mt-10 mx-auto
+          w-[72vw] h-[72vw] sm:w-[80vw] sm:h-[80vw]
+          max-w-[360px] max-h-[360px]
+          lg:absolute lg:right-[7vw] lg:top-[18vh]
+          lg:w-[34vw] lg:h-[34vw]
+          lg:max-w-[480px] lg:max-h-[480px]
+        "
+      >
+        <div className="relative w-full h-full bg-card rounded-2xl card-shadow overflow-hidden">
+          <div className="absolute top-4 left-4 w-3 h-3 bg-violet rounded-full animate-pulse-subtle z-10" />
+          <img
+            src="/hero_portrait.jpg"
+            alt="Soniya Varshney"
+            className="w-full h-full object-cover"
+          />
         </div>
       </div>
+    </div>
 
-      {/* Social Links - Bottom Right */}
-      <div className="absolute bottom-8 right-[7vw] flex gap-4 z-20">
-        <a
-          href="https://github.com/Soniya-hub"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-10 h-10 flex items-center justify-center rounded-full bg-card border border-border text-muted-foreground hover:text-violet hover:border-violet/50 transition-all"
-        >
-          <Github className="w-5 h-5" />
-        </a>
-        <a
-          href="https://www.linkedin.com/in/soniya-varshney-49071a1b8"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-10 h-10 flex items-center justify-center rounded-full bg-card border border-border text-muted-foreground hover:text-violet hover:border-violet/50 transition-all"
-        >
-          <Linkedin className="w-5 h-5" />
-        </a>
-      </div>
-    </section>
-  );
-}
+    {/* Social Links */}
+    <div className="absolute bottom-6 right-6 lg:right-[7vw] flex gap-4 z-20">
+      <a href="https://github.com/Soniya-hub" target="_blank" className="social-icon">
+        <Github className="w-5 h-5" />
+      </a>
+      <a href="https://www.linkedin.com/in/soniya-varshney-49071a1b8" target="_blank" className="social-icon">
+        <Linkedin className="w-5 h-5" />
+      </a>
+    </div>
+  </section>
+);}
