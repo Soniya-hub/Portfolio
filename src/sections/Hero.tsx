@@ -142,7 +142,7 @@ export default function Hero() {
   <section
     ref={sectionRef}
     id="hero"
-    className="relative w-full min-h-[90vh] lg:h-screen bg-navy overflow-hidden"
+    className="relative w-full min-h-screen lg:h-screen bg-navy overflow-hidden"
   >
     {/* Background gradient */}
     <div className="absolute inset-0 bg-gradient-radial" />
@@ -188,7 +188,7 @@ export default function Hero() {
     </nav>
 
     {/* Content Wrapper */}
-    <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center h-full pt-28 lg:pt-0">
+    <div className="relative z-10 flex flex-col lg:flex-row items-center h-full pt-20 lg:pt-0">
       
       {/* LEFT CONTENT */}
       <div
@@ -196,7 +196,7 @@ export default function Hero() {
         className="
           px-6 lg:px-0
           w-full lg:w-[44vw] max-w-[600px]
-          lg:absolute lg:left-[7vw] lg:top-[26vh]
+          lg:absolute lg:left-[7vw] lg:top-[22vh]
         "
       >
         <h1 className="font-heading font-bold text-foreground leading-[0.95] mb-4">
@@ -262,21 +262,25 @@ export default function Hero() {
       <div
         ref={imageRef}
         className="
-          relative mt-10 mx-auto
-          w-[80vw] h-[80vw]
-          max-w-[360px] max-h-[360px]
-          lg:absolute lg:right-[7vw] lg:top-[18vh]
-          lg:w-[34vw] lg:h-[34vw]
-          lg:max-w-[480px] lg:max-h-[480px]
+          relative mt-8 mx-auto
+          w-[58vw] h-[68vw]
+          max-w-[240px] max-h-[280px]
+          lg:absolute lg:right-[7vw] lg:top-[10vh]
+          lg:w-[30vw] lg:h-[78vh]
+          lg:max-w-[400px] lg:max-h-[600px]
         "
       >
+        {/* Glow ring */}
+        <div className="absolute -inset-[2px] rounded-2xl bg-gradient-to-b from-violet/30 to-transparent" />
         <div className="relative w-full h-full bg-card rounded-2xl card-shadow overflow-hidden">
           <div className="absolute top-4 left-4 w-3 h-3 bg-violet rounded-full animate-pulse-subtle z-10" />
           <img
             src="/hero_portrait.jpg"
             alt="Soniya Varshney"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-top"
           />
+          {/* Bottom fade */}
+          <div className="absolute bottom-0 left-0 right-0 h-1/4 bg-gradient-to-t from-navy/50 to-transparent" />
         </div>
       </div>
     </div>
