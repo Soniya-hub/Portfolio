@@ -187,90 +187,124 @@ export default function Hero() {
       </div>
     </nav>
 
-    {/* Content Wrapper */}
-    <div className="relative z-10 flex flex-col lg:flex-row items-center h-full pt-20 lg:pt-0">
-      
+    {/* ── MOBILE LAYOUT (hidden on lg+) ── */}
+    <div className="lg:hidden relative z-10 flex flex-col px-5 pt-20 pb-10">
+      {/* Top row: photo + name */}
+      <div className="flex items-start gap-4 mb-5">
+        <div className="flex-shrink-0 w-[96px] h-[116px] rounded-2xl overflow-hidden ring-1 ring-violet/30 card-shadow">
+          <img src="/hero_portrait.jpg" alt="Soniya Varshney" className="w-full h-full object-cover object-top" />
+        </div>
+        <div className="pt-1">
+          <h1 className="font-heading font-bold text-foreground leading-[0.9] mb-2">
+            <span className="block text-[clamp(30px,9vw,44px)]">Soniya</span>
+            <span className="block text-[clamp(30px,9vw,44px)]">Varshney</span>
+          </h1>
+          <p className="text-xs text-violet font-medium leading-snug">
+            Senior Software Engineer<br />· Freelance Automation
+          </p>
+        </div>
+      </div>
+
+      {/* Bio */}
+      <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+        3.5+ years at Optum building Java microservices, Spring Boot backends, and React frontends.
+        MBA Finance. End-to-end freelance automation — AI proposals, onboarding &amp; invoice pipelines.
+      </p>
+
+      {/* CTA buttons */}
+      <div className="flex gap-3 mb-4">
+        <Button
+          onClick={() => scrollToSection('projects')}
+          className="flex-1 bg-violet hover:bg-violet-dark text-white py-5 rounded-xl text-sm font-medium"
+        >
+          View My Work <ChevronDown className="ml-1.5 w-4 h-4" />
+        </Button>
+        <Button
+          onClick={() => scrollToSection('contact')}
+          variant="outline"
+          className="flex-1 border-violet/40 text-violet hover:bg-violet hover:text-white py-5 rounded-xl text-sm font-medium"
+        >
+          Hire Me
+        </Button>
+      </div>
+
+      {/* Pills */}
+      <div className="flex gap-2 flex-wrap mb-5">
+        <span className="px-3 py-1.5 bg-card rounded-full text-xs font-mono text-muted-foreground border">
+          3.5+ Years · MBA Finance
+        </span>
+        <span className="px-3 py-1.5 bg-violet/10 rounded-full text-xs font-mono text-violet border border-violet/30 animate-pulse-subtle">
+          Available for Freelance
+        </span>
+      </div>
+
+      {/* Social links */}
+      <div className="flex gap-4">
+        <a href="https://github.com/Soniya-hub" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" className="social-icon">
+          <Github className="w-5 h-5" />
+        </a>
+        <a href="https://www.linkedin.com/in/soniya-varshney-49071a1b8" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" className="social-icon">
+          <Linkedin className="w-5 h-5" />
+        </a>
+      </div>
+    </div>
+
+    {/* ── DESKTOP LAYOUT (hidden on mobile) ── */}
+    <div className="hidden lg:block relative z-10 h-full">
       {/* LEFT CONTENT */}
       <div
         ref={headlineRef}
-        className="
-          px-6 lg:px-0
-          w-full lg:w-[44vw] max-w-[600px]
-          lg:absolute lg:left-[7vw] lg:top-[22vh]
-        "
+        className="absolute left-[7vw] top-[22vh] w-[44vw] max-w-[600px]"
       >
         <h1 className="font-heading font-bold text-foreground leading-[0.95] mb-4">
           <span className="word block text-[clamp(36px,6vw,64px)]">Soniya</span>
           <span className="word block text-[clamp(36px,6vw,64px)]">Varshney</span>
         </h1>
-
         <p className="word text-lg md:text-2xl text-violet font-medium mb-3">
           Senior Software Engineer · Freelance Automation
         </p>
-
         <p className="word text-base text-muted-foreground max-w-[420px] leading-relaxed">
           3.5+ years at Optum building Java microservices, Spring Boot backends, and React frontends.
           MBA Finance. I also design end-to-end freelance automation systems — AI proposals,
           client onboarding, and invoice pipelines for startups.
         </p>
+      </div>
 
-        {/* CTA */}
-        <div
-  ref={ctaRef}
-  className="
-    mt-6
-    lg:mt-4
-    lg:absolute lg:top-[50vh]
-  "
->
-          <div className="flex flex-wrap gap-3">
-            <Button
-              onClick={() => scrollToSection('projects')}
-              className="bg-violet hover:bg-violet-dark text-white px-6 py-5 rounded-xl text-sm font-medium"
-            >
-              View My Work
-              <ChevronDown className="ml-2 w-4 h-4" />
-            </Button>
-            <Button
-              onClick={() => scrollToSection('contact')}
-              variant="outline"
-              className="border-violet/40 text-violet hover:bg-violet hover:text-white px-6 py-5 rounded-xl text-sm font-medium transition-all"
-            >
-              Hire Me
-            </Button>
-          </div>
+      {/* CTA */}
+      <div ref={ctaRef} className="absolute left-[7vw] top-[50vh]">
+        <div className="flex flex-wrap gap-3">
+          <Button
+            onClick={() => scrollToSection('projects')}
+            className="bg-violet hover:bg-violet-dark text-white px-6 py-5 rounded-xl text-sm font-medium"
+          >
+            View My Work
+            <ChevronDown className="ml-2 w-4 h-4" />
+          </Button>
+          <Button
+            onClick={() => scrollToSection('contact')}
+            variant="outline"
+            className="border-violet/40 text-violet hover:bg-violet hover:text-white px-6 py-5 rounded-xl text-sm font-medium transition-all"
+          >
+            Hire Me
+          </Button>
         </div>
+      </div>
 
-        {/* Pills */}
-       <div
-  ref={pillsRef}
-  className="
-    mt-4 flex gap-3 flex-wrap
-    lg:absolute lg:top-[60vh]
-  "
->
-          <span className="pill px-4 py-2 bg-card rounded-full text-xs font-mono text-muted-foreground border">
-            3.5+ Years · MBA Finance
-          </span>
-          <span className="pill px-4 py-2 bg-violet/10 rounded-full text-xs font-mono text-violet border border-violet/30 animate-pulse-subtle">
-            Available for Freelance
-          </span>
-        </div>
+      {/* Pills */}
+      <div ref={pillsRef} className="absolute left-[7vw] top-[60vh] flex gap-3 flex-wrap">
+        <span className="pill px-4 py-2 bg-card rounded-full text-xs font-mono text-muted-foreground border">
+          3.5+ Years · MBA Finance
+        </span>
+        <span className="pill px-4 py-2 bg-violet/10 rounded-full text-xs font-mono text-violet border border-violet/30 animate-pulse-subtle">
+          Available for Freelance
+        </span>
       </div>
 
       {/* RIGHT IMAGE */}
       <div
         ref={imageRef}
-        className="
-          relative mt-8 mx-auto
-          w-[58vw] h-[68vw]
-          max-w-[240px] max-h-[280px]
-          lg:absolute lg:right-[7vw] lg:top-[10vh]
-          lg:w-[30vw] lg:h-[78vh]
-          lg:max-w-[400px] lg:max-h-[600px]
-        "
+        className="absolute right-[7vw] top-[10vh] w-[30vw] h-[78vh] max-w-[400px] max-h-[600px]"
       >
-        {/* Glow ring */}
         <div className="absolute -inset-[2px] rounded-2xl bg-gradient-to-b from-violet/30 to-transparent" />
         <div className="relative w-full h-full bg-card rounded-2xl card-shadow overflow-hidden">
           <div className="absolute top-4 left-4 w-3 h-3 bg-violet rounded-full animate-pulse-subtle z-10" />
@@ -279,26 +313,19 @@ export default function Hero() {
             alt="Soniya Varshney"
             className="w-full h-full object-cover object-top"
           />
-          {/* Bottom fade */}
           <div className="absolute bottom-0 left-0 right-0 h-1/4 bg-gradient-to-t from-navy/50 to-transparent" />
         </div>
       </div>
-    </div>
 
-    {/* Social Links */}
-    <div
-  className="
-    mt-6 flex justify-center gap-6
-    lg:mt-0 lg:absolute lg:bottom-8 lg:right-[7vw]
-    z-20
-  "
->
-      <a href="https://github.com/Soniya-hub" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" className="social-icon">
-        <Github className="w-5 h-5" />
-      </a>
-      <a href="https://www.linkedin.com/in/soniya-varshney-49071a1b8" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" className="social-icon">
-        <Linkedin className="w-5 h-5" />
-      </a>
+      {/* Social Links */}
+      <div className="absolute bottom-8 right-[7vw] flex gap-6 z-20">
+        <a href="https://github.com/Soniya-hub" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" className="social-icon">
+          <Github className="w-5 h-5" />
+        </a>
+        <a href="https://www.linkedin.com/in/soniya-varshney-49071a1b8" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" className="social-icon">
+          <Linkedin className="w-5 h-5" />
+        </a>
+      </div>
     </div>
   </section>
 );}
