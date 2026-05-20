@@ -7,27 +7,27 @@ gsap.registerPlugin(ScrollTrigger);
 const skillCategories = [
   {
     title: 'Backend',
-    skills: ['Java', 'Spring Boot', 'Hibernate', 'REST APIs', 'Microservices', 'Node.js'],
+    skills: ['Java', 'Spring Boot', 'Hibernate', 'REST APIs', 'Microservices', 'Node.js', 'JUnit', 'JSP'],
   },
   {
     title: 'Frontend',
-    skills: ['Angular', 'React', 'TypeScript', 'JavaScript', 'HTML/CSS', 'Bootstrap'],
+    skills: ['React.js', 'Angular', 'TypeScript', 'JavaScript (ES6+)', 'HTML5/CSS3', 'TailwindCSS', 'Bootstrap', 'WordPress'],
   },
   {
-    title: 'AI/ML & Data',
-    skills: ['Python', 'NumPy', 'Pandas', 'OpenAI API', 'Basic ML Models'],
+    title: 'Automation & AI',
+    skills: ['OpenAI API', 'Prompt Engineering', 'Spring @Scheduled', 'JavaMail', 'iText PDF', 'Workflow Automation'],
   },
   {
     title: 'Databases',
-    skills: ['SQL', 'Oracle', 'PostgreSQL', 'SQL Server'],
+    skills: ['MySQL', 'PostgreSQL', 'Oracle', 'SQL Server'],
   },
   {
-    title: 'DevOps & Tools',
-    skills: ['Git', 'GitHub', 'Jenkins', 'Jira', 'Postman', 'Maven'],
+    title: 'Cloud & DevOps',
+    skills: ['GCP', 'AWS', 'Docker', 'Jenkins', 'GitHub Actions', 'CI/CD', 'Git'],
   },
   {
-    title: 'Methodologies',
-    skills: ['Agile/Scrum', 'Code Reviews', 'Unit Testing', 'CI/CD'],
+    title: 'Business & Finance',
+    skills: ['MBA Finance', 'Financial Modelling', 'Cost-Benefit Analysis', 'Client Management', 'Agile/Scrum'],
   },
 ];
 

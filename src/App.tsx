@@ -7,8 +7,12 @@ import About from './sections/About';
 import Skills from './sections/Skills';
 import Experience from './sections/Experience';
 import Projects from './sections/Projects';
+import Certifications from './sections/Certifications';
 import Testimonials from './sections/Testimonials';
 import Contact from './sections/Contact';
+import ScrollProgress from './components/ScrollProgress';
+import BackToTop from './components/BackToTop';
+import CursorSpotlight from './components/CursorSpotlight';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -69,6 +73,11 @@ function App() {
 
   return (
     <main className="relative bg-navy min-h-screen">
+      {/* Global UI */}
+      <ScrollProgress />
+      <CursorSpotlight />
+      <BackToTop />
+
       {/* Noise overlay */}
       <div className="noise-overlay" />
 
@@ -78,6 +87,7 @@ function App() {
       <Skills />
       <Experience />
       <Projects />
+      <Certifications />
       <Testimonials />
       <Contact />
 

@@ -7,15 +7,15 @@ gsap.registerPlugin(ScrollTrigger);
 
 const quickFacts = [
   { icon: MapPin, label: 'Location', value: 'India' },
-  { icon: GraduationCap, label: 'Education', value: 'B.Tech (Computer Science)' },
-  { icon: Briefcase, label: 'Current', value: 'Associate Software Engineer II @ Optum' },
-  { icon: Code, label: 'Focus', value: 'Backend · Frontend · AI/ML · WordPress' },
+  { icon: GraduationCap, label: 'Education', value: 'B.Tech CS · MBA Finance' },
+  { icon: Briefcase, label: 'Current', value: 'Senior Software Engineer @ Optum' },
+  { icon: Code, label: 'Focus', value: 'Backend · Frontend · Automation · Fintech' },
 ];
 
 const interests = [
-  { icon: Brain, label: 'AI/ML' },
+  { icon: Brain, label: 'AI Automation' },
   { icon: Plane, label: 'System Design' },
-  { icon: Palette, label: 'UI/UX Design' },
+  { icon: Palette, label: 'Fintech / SaaS' },
 ];
 
 export default function About() {
@@ -141,33 +141,28 @@ export default function About() {
               ref={headlineRef}
               className="font-heading font-bold text-[clamp(32px,3.6vw,48px)] text-foreground mb-8 leading-tight"
             >
-              Developer by day.
+              Engineer by day.
               <br />
-              Learner by night.
+              Builder by night.
             </h2>
             <div ref={bodyRef} className="space-y-4">
               <p className="text-base text-muted-foreground leading-relaxed">
-                I'm Soniya — a full-stack developer with 3+ years of experience building
-production-grade enterprise applications and user-focused web solutions.
+                I’m Soniya — Senior Software Engineer at Optum (UnitedHealth Group) with 3.5+ years
+                building Java microservices, Spring Boot backends, and React frontends at enterprise scale.
+                I also hold an MBA in Finance.
               </p>
               <p className="text-base text-muted-foreground leading-relaxed">
-  I’ve worked extensively with Java, Spring Boot, and modern frontend frameworks
-  to deliver scalable backend systems, responsive React interfaces, and
-  professionally deployed WordPress websites for real business use cases.
-</p>
-
-<p className="text-base text-muted-foreground leading-relaxed">
-  I’ve also contributed to and supported large-scale enterprise applications
-  used by millions of active users, focusing on reliability, performance,
-  and production stability.
-</p>
-<p className="text-base text-muted-foreground leading-relaxed">
-Currently, I’m exploring AI-assisted features and integrations to enhance
-developer productivity and build smarter application workflows.
-</p>
+                Beyond my day job, I design and build end-to-end <span className="text-foreground font-medium">freelance automation systems</span> for
+                startups and solo professionals — AI-powered proposal generation, client onboarding flows,
+                PDF invoice automation, and CRM portals — so founders can run their business on autopilot.
+              </p>
               <p className="text-base text-muted-foreground leading-relaxed">
-               I care deeply about performance, clean architecture, accessibility, and
-shipping software that lasts.
+                I’ve contributed to enterprise applications used by millions, focusing on reliability,
+                clean architecture, and production stability. Currently available for freelance engagements
+                in fintech, SaaS, and startup automation.
+              </p>
+              <p className="text-base text-muted-foreground leading-relaxed">
+                I care about shipping software that lasts — performant, accessible, and maintainable.
               </p>
             </div>
           </div>

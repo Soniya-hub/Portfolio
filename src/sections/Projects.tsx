@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Github } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -19,73 +19,113 @@ type Project = {
   tech: string[];
   image: string;
   link?: string;
+  github?: string;
   caseStudy?: CaseStudy;
 };
-const projects: Project[] = [ 
- {
-  title: 'Release Management Tool',
-  description:
-    'Internal enterprise tool to manage release approvals, replace SharePoint workflows, and improve audit compliance.',
-  tech: ['Java', 'Spring Boot', 'Hibernate', 'React', 'JavaScript', 'REST APIs'],
-  image: '/project_release_tool.jpg',
-  caseStudy: {
-    role: 'Full Stack Developer',
-    type: 'Internal Company Project',
-    overview:
-      'An internal release management system built to automate release approvals, replace manual SharePoint workflows, and ensure audit compliance.',
-    contributions: [
-      'Designed and implemented release approval workflows',
-      'Built role-based access control for different user roles',
-      'Developed REST APIs for release lifecycle management',
-      'Integrated frontend UI with backend services',
-      'Improved release turnaround time and audit traceability',
-    ],
-    impact: 'Reduced manual approvals and improved release governance.',
-  },
-},
- {
-  title: 'Auto Insurance Platform',
-  description:
-    'Enterprise insurance management system with policy lifecycle handling, customer workflows, and admin dashboards.',
-  tech: ['Java', 'JSP', 'MySQL', 'REST APIs'],
-  image: '/project_insurance.jpg',
-  link: 'https://github.com/Soniya-hub/auto-insurance-platform',
-},
+const projects: Project[] = [
   {
-  title: 'COVID Report Manager',
-  description:
-    'Desktop Java GUI application for patient data entry and fast SQL-backed retrieval during COVID case tracking.',
-  tech: ['Java', 'SQL', 'Swing'],
-  image: '/project_covid.jpg',
-  caseStudy: {
-    role: 'Java Developer',
-    type: 'Company Project',
-    overview:
-      'A desktop application built to efficiently record and retrieve COVID patient data using a Java-based GUI and SQL backend.',
-    contributions: [
-      'Designed Java Swing-based desktop UI',
-      'Implemented CRUD operations using SQL',
-      'Optimized queries for faster patient data retrieval',
-    ],
-    impact:
-      'Enabled faster data entry and lookup during high-volume data scenarios.',
+    title: 'FlwCRM — SaaS CRM Platform',
+    description:
+      'Full-stack SaaS CRM for sales teams and businesses: lead pipeline management, task tracking, analytics dashboards, admin panel, and JWT-based role access. Live and deployed.',
+    tech: ['React.js', 'Spring Boot', 'PostgreSQL', 'JWT', 'TailwindCSS', 'Vercel', 'Render'],
+    image: '/project_release_tool.jpg',
+    link: 'https://flwcrm.vercel.app/login',
+    github: 'https://github.com/Soniya-hub/flwcrm',
+    caseStudy: {
+      role: 'Full Stack Developer & Product Owner',
+      type: 'Personal SaaS Build — Live at flwcrm.vercel.app',
+      overview:
+        'FlwCRM is a production-grade SaaS CRM platform built for sales teams and small businesses — covering the full lead lifecycle from acquisition to conversion, with real-time analytics and multi-user support.',
+      contributions: [
+        'End-to-end lead management with CRUD, search, filter by status, and assignment',
+        'Task management with priority levels, status tracking, and overdue detection',
+        'Analytics dashboard — revenue metrics, lead distribution, pipeline performance charts',
+        'Admin panel with user management, role-based access (Admin / User), and activity logs',
+        'JWT authentication with protected REST endpoints and permission hierarchy',
+        'Deployed frontend on Vercel + backend on Render with full CI/CD pipeline',
+      ],
+      impact: 'Live product serving real users — demonstrates ability to design, build, and ship a complete SaaS from scratch.',
+    },
   },
-},
+  {
+    title: 'FreelanceOS — Automation Platform',
+    description:
+      'End-to-end freelance automation system: AI proposal generation (OpenAI), client onboarding flows, PDF invoice automation, follow-up scheduler, and admin + client portals.',
+    tech: ['Spring Boot', 'React.js', 'MySQL', 'OpenAI API', 'JavaMail', 'iText PDF', 'GCP'],
+    image: '/project_covid.jpg',
+    caseStudy: {
+      role: 'Full Stack Developer & Architect',
+      type: 'Personal Build (In Progress)',
+      overview:
+        'A full-stack automation platform that lets freelancers and startups run their business on autopilot — from the first client message to the final invoice — powered by Spring Boot, React.js, and OpenAI.',
+      contributions: [
+        'AI proposal generator using OpenAI API with prompt engineering',
+        'Client onboarding flows with automated email sequences (JavaMail)',
+        'PDF invoice generation with iText and scheduled follow-ups (Spring @Scheduled)',
+        'Role-based access: Admin (freelancer) and Client portal',
+        'Deployed on GCP with CI/CD pipeline',
+      ],
+      impact: 'Enables founders and solo professionals to eliminate admin overhead and focus on growth.',
+    },
+  },
+  {
+    title: 'Release Management Tool',
+    description:
+      'Enterprise internal tool replacing SharePoint release workflows at Optum — approval lifecycle, audit compliance, JWT auth, and React.js portal used across large engineering teams.',
+    tech: ['Java', 'Spring Boot', 'Node.js', 'React.js', 'Bootstrap', 'JWT', 'REST APIs'],
+    image: '/project_release_tool.jpg',
+    caseStudy: {
+      role: 'Full Stack Developer',
+      type: 'Enterprise — Optum / UnitedHealth Group',
+      overview:
+        'An internal release management system built to automate release approvals, replace manual SharePoint workflows, and ensure audit compliance for enterprise-scale deployments.',
+      contributions: [
+        'Designed and implemented release approval workflows in Java Spring Boot',
+        'Built Node.js REST microservices for async operations alongside core Java services',
+        'Redesigned internal portal UI with React.js and Bootstrap for better responsiveness',
+        'Implemented JWT auth, input validation, and structured logging',
+        'Drove 25% increase in project throughput and 40% improvement in customer satisfaction',
+      ],
+      impact: 'Resolved 100+ production issues; boosted application reliability and user satisfaction by 30%.',
+    },
+  },
+  {
+    title: 'InvestorVault',
+    description:
+      'RBAC-based investor management portal with compound/simple interest calculators, task tracking, lead dashboards, and paginated data views.',
+    tech: ['React.js', 'Spring Boot', 'MySQL', 'REST APIs', 'JWT'],
+    image: '/project_insurance.jpg',
+    link: 'https://github.com/Soniya-hub',
+  },
+  {
+    title: 'Auto Insurance Platform',
+    description:
+      'Scalable enterprise insurance management system — end-to-end policy lifecycle, claims workflows, and admin dashboards.',
+    tech: ['Java', 'Angular', 'Spring Boot', 'MySQL', 'REST APIs'],
+    image: '/project_insurance.jpg',
+    link: 'https://github.com/Soniya-hub/auto-insurance-platform',
+  },
   {
     title: 'WordPress Business Website',
     description:
-      'SEO-optimized business site with responsive design, contact forms, and analytics.',
+      'SEO-optimised business website for a finance company — Elementor Pro, lead capture, Google Analytics, fully responsive.',
     tech: ['WordPress', 'Elementor', 'SEO'],
     image: '/project_wordpress.jpg',
     link: 'https://www.vamcapital.in/',
   },
 ];
 
+const allTags = ['All', ...Array.from(new Set(projects.flatMap((p) => p.tech)))];
+
 export default function Projects() {
   const [activeCaseStudy, setActiveCaseStudy] = useState<Project | null>(null);
+  const [activeFilter, setActiveFilter] = useState('All');
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
+
+  const filteredProjects =
+    activeFilter === 'All' ? projects : projects.filter((p) => p.tech.includes(activeFilter));
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -199,6 +239,23 @@ export default function Projects() {
           <p className="text-base text-muted-foreground max-w-md">
             A few things I&apos;ve built — from enterprise tools to experiments.
           </p>
+
+          {/* Tech Filter */}
+          <div className="mt-6 flex flex-wrap gap-2">
+            {allTags.map((tag) => (
+              <button
+                key={tag}
+                onClick={() => setActiveFilter(tag)}
+                className={`px-3 py-1.5 rounded-full text-xs font-mono border transition-all ${
+                  activeFilter === tag
+                    ? 'bg-violet text-white border-violet'
+                    : 'border-border text-muted-foreground hover:border-violet/40 hover:text-foreground'
+                }`}
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Projects Grid */}
@@ -206,7 +263,7 @@ export default function Projects() {
           ref={cardsRef}
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
-          {projects.map((project, index) => (
+          {filteredProjects.map((project, index) => (
             <div
               key={index}
               className="project-card group bg-card rounded-2xl overflow-hidden card-shadow hover:border-violet/30 border border-transparent transition-all"
@@ -242,29 +299,44 @@ export default function Projects() {
                   ))}
                 </div>
 
-                {/* Link Button */}
-                {project.caseStudy ? (
-  <Button
-    variant="outline"
-    size="sm"
-    className="w-full border-violet/30 text-violet hover:bg-violet hover:text-white transition-all"
-    onClick={() => setActiveCaseStudy(project)}
-  >
-    Case Study
-  </Button>
-) : (
-  <Button
-    variant="outline"
-    size="sm"
-    className="w-full border-violet/30 text-violet hover:bg-violet hover:text-white transition-all"
-    asChild
-  >
-    <a href={project.link} target="_blank" rel="noopener noreferrer">
-      View Project
-      <ExternalLink className="ml-2 w-4 h-4" />
-    </a>
-  </Button>
-)}
+                {/* Link Buttons */}
+                <div className="flex gap-2">
+                  {project.caseStudy && (
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className={`border-violet/30 text-violet hover:bg-violet hover:text-white transition-all ${project.link || project.github ? 'flex-1' : 'w-full'}`}
+                      onClick={() => setActiveCaseStudy(project)}
+                    >
+                      Case Study
+                    </Button>
+                  )}
+                  {project.link && (
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className={`border-violet/30 text-violet hover:bg-violet hover:text-white transition-all ${project.caseStudy || project.github ? 'flex-1' : 'w-full'}`}
+                      asChild
+                    >
+                      <a href={project.link} target="_blank" rel="noopener noreferrer">
+                        Live Demo
+                        <ExternalLink className="ml-1.5 w-3.5 h-3.5" />
+                      </a>
+                    </Button>
+                  )}
+                  {project.github && (
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="border-border text-muted-foreground hover:text-foreground hover:border-border/80 transition-all px-3"
+                      asChild
+                    >
+                      <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label="View source on GitHub">
+                        <Github className="w-4 h-4" />
+                      </a>
+                    </Button>
+                  )}
+                </div>
               </div>
             </div>
           ))}

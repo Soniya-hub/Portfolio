@@ -7,24 +7,36 @@ gsap.registerPlugin(ScrollTrigger);
 
 const experiences = [
   {
-    title: 'Associate Software Engineer II',
-    company: 'Optum',
-    duration: '2024 – Present',
+    title: 'Senior Software Engineer',
+    company: 'Optum · UnitedHealth Group',
+    duration: 'May 2026 – Present',
     bullets: [
-      'Promoted based on delivery of business-critical modules.',
-      'Built an internal Release Management Tool (Spring Boot + JSP + REST APIs).',
-      'Redesigned legacy UI into a modern, responsive layout.',
-      'Mentored juniors; improved code quality and sprint throughput.',
+      'Promoted for consistent delivery, technical leadership, and ownership of business-critical modules.',
+      'Lead backend architecture decisions for Java Spring Boot microservices supporting enterprise-scale release workflows.',
+      'Drive technical design reviews, API contracts, and full-stack delivery across Java, Node.js, and React.js.',
+      'Mentor junior and mid-level developers on microservice design, clean code, and CI/CD best practices.',
+    ],
+  },
+  {
+    title: 'Software Engineer (ASE-2)',
+    company: 'Optum · UnitedHealth Group',
+    duration: '2025 – May 2026',
+    bullets: [
+      'Designed and developed an internal Release Management Tool (Java, Spring Boot, Hibernate, Node.js), replacing SharePoint workflows and reducing approval cycle time significantly.',
+      'Built Node.js REST microservices for async operations alongside core Java services.',
+      'Redesigned internal portal UI with React.js and Bootstrap — improving responsiveness and user engagement.',
+      'Implemented JWT auth, input validation, and structured logging across Java and Node.js services.',
+      'Drove cross-functional collaboration resulting in 25% increase in throughput and 40% improvement in customer satisfaction.',
     ],
   },
   {
     title: 'Associate Software Engineer I',
-    company: 'Optum',
+    company: 'Optum · UnitedHealth Group',
     duration: '2022 – 2024',
     bullets: [
-      'Developed high-performance apps with Spring Boot + Angular.',
-      'Created RESTful APIs and optimized SQL Server queries.',
-      'Led feature development end-to-end (UI + backend).',
+      'Developed high-performance distributed applications using Spring Boot, JSP, Angular, and Bootstrap.',
+      'Integrated RESTful APIs with front-end UIs and optimised SQL Server queries for performance and scalability.',
+      'Conducted code reviews and promoted clean coding standards across the team.',
     ],
   },
   {
@@ -32,7 +44,7 @@ const experiences = [
     company: 'Apisero',
     duration: '2021 – 2022',
     bullets: [
-      'Gained hands-on exposure to Salesforce, Snowflake, and full-stack basics.',
+      'Developed expertise in Salesforce, Snowflake, Java, HTML, CSS, jQuery, and JavaScript.',
     ],
   },
 ];

@@ -27,6 +27,28 @@
     --ring: 252 100% 68%;
     --radius: 0.875rem;
   }
+
+  .light {
+    --background: 220 20% 97%;
+    --foreground: 220 33% 10%;
+    --card: 220 20% 92%;
+    --card-foreground: 220 33% 10%;
+    --popover: 220 20% 92%;
+    --popover-foreground: 220 33% 10%;
+    --primary: 252 80% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 15% 88%;
+    --secondary-foreground: 220 33% 10%;
+    --muted: 220 15% 85%;
+    --muted-foreground: 220 15% 40%;
+    --accent: 252 80% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 15% 80%;
+    --input: 220 15% 80%;
+    --ring: 252 80% 55%;
+  }
 }
 
 @layer base {
@@ -65,6 +87,10 @@
   .bg-gradient-radial {
     background: radial-gradient(900px 500px at 72% 30%, rgba(123, 97, 255, 0.18), transparent 60%);
   }
+
+  .light .bg-gradient-radial {
+    background: radial-gradient(900px 500px at 72% 30%, rgba(123, 97, 255, 0.10), transparent 60%);
+  }
   
   .noise-overlay {
     position: fixed;
@@ -86,6 +112,15 @@
   .card-shadow {
     box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
   }
+}
+
+/* Nav & Social utilities */
+.nav-link {
+  @apply text-sm font-medium text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded;
+}
+
+.social-icon {
+  @apply flex items-center justify-center w-9 h-9 rounded-lg text-muted-foreground hover:text-foreground hover:bg-card border border-transparent hover:border-border transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring;
 }
 
 /* Custom scrollbar */
@@ -110,4 +145,23 @@
 ::selection {
   background: rgba(123, 97, 255, 0.3);
   color: hsl(var(--foreground));
+}
+
+/* Light mode overrides for navy utility classes */
+.light .bg-navy {
+  background-color: hsl(220 20% 97%) !important;
+}
+.light .bg-navy-light {
+  background-color: hsl(220 20% 92%) !important;
+}
+.light .bg-navy-lighter {
+  background-color: hsl(220 20% 88%) !important;
+}
+.light .bg-card {
+  background-color: hsl(220 20% 92%);
+}
+
+/* Theme transition */
+*, *::before, *::after {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }

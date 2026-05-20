@@ -1,8 +1,9 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ChevronDown, Github, Linkedin } from 'lucide-react';
+import { ChevronDown, Github, Linkedin, Moon, Sun, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useTheme } from 'next-themes';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,6 +14,7 @@ export default function Hero() {
   const ctaRef = useRef<HTMLDivElement>(null);
   const pillsRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLElement>(null);
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -153,15 +155,34 @@ export default function Hero() {
       <div className="font-heading font-bold text-2xl text-foreground tracking-tight">
         SV.
       </div>
-      <div className="flex items-center gap-5 lg:gap-7">
-        <button onClick={() => scrollToSection('projects')} className="nav-link">
+      <div className="flex items-center gap-4 lg:gap-6">
+        <button onClick={() => scrollToSection('projects')} aria-label="Go to projects" className="nav-link">
           Work
         </button>
-        <button onClick={() => scrollToSection('about')} className="nav-link">
+        <button onClick={() => scrollToSection('about')} aria-label="Go to about" className="nav-link">
           About
         </button>
-        <button onClick={() => scrollToSection('contact')} className="nav-link">
+        <button onClick={() => scrollToSection('certifications')} aria-label="Go to certifications" className="nav-link hidden md:inline">
+          Certs
+        </button>
+        <button onClick={() => scrollToSection('contact')} aria-label="Go to contact" className="nav-link">
           Contact
+        </button>
+        <a
+          href="/Soniya_Varshney_Resume.pdf"
+          download
+          aria-label="Download Resume"
+          className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-violet/40 text-xs font-mono text-violet hover:bg-violet/10 transition-colors"
+        >
+          <Download className="w-3.5 h-3.5" />
+          Resume
+        </a>
+        <button
+          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          aria-label="Toggle theme"
+          className="p-2 rounded-lg border border-border hover:border-violet/40 text-muted-foreground hover:text-foreground transition-colors"
+        >
+          {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
         </button>
       </div>
     </nav>
@@ -184,13 +205,13 @@ export default function Hero() {
         </h1>
 
         <p className="word text-lg md:text-2xl text-violet font-medium mb-3">
-          Full Stack Developer
+          Senior Software Engineer · Freelance Automation
         </p>
 
         <p className="word text-base text-muted-foreground max-w-[420px] leading-relaxed">
-          Full Stack Developer with 3+ years of experience building Java & Spring Boot
-          enterprise applications, modern React frontends, AI-assisted features,
-          and professional WordPress websites.
+          3.5+ years at Optum building Java microservices, Spring Boot backends, and React frontends.
+          MBA Finance. I also design end-to-end freelance automation systems — AI proposals,
+          client onboarding, and invoice pipelines for startups.
         </p>
 
         {/* CTA */}
@@ -202,13 +223,22 @@ export default function Hero() {
     lg:absolute lg:top-[50vh]
   "
 >
-          <Button
-            onClick={() => scrollToSection('projects')}
-            className="bg-violet hover:bg-violet-dark text-white px-6 py-5 rounded-xl text-sm font-medium"
-          >
-            View My Work
-            <ChevronDown className="ml-2 w-4 h-4" />
-          </Button>
+          <div className="flex flex-wrap gap-3">
+            <Button
+              onClick={() => scrollToSection('projects')}
+              className="bg-violet hover:bg-violet-dark text-white px-6 py-5 rounded-xl text-sm font-medium"
+            >
+              View My Work
+              <ChevronDown className="ml-2 w-4 h-4" />
+            </Button>
+            <Button
+              onClick={() => scrollToSection('contact')}
+              variant="outline"
+              className="border-violet/40 text-violet hover:bg-violet hover:text-white px-6 py-5 rounded-xl text-sm font-medium transition-all"
+            >
+              Hire Me
+            </Button>
+          </div>
         </div>
 
         {/* Pills */}
@@ -220,10 +250,10 @@ export default function Hero() {
   "
 >
           <span className="pill px-4 py-2 bg-card rounded-full text-xs font-mono text-muted-foreground border">
-            3+ Years Experience
+            3.5+ Years · MBA Finance
           </span>
-          <span className="pill px-4 py-2 bg-violet/10 rounded-full text-xs font-mono text-violet border border-violet/30">
-            Open to Opportunities
+          <span className="pill px-4 py-2 bg-violet/10 rounded-full text-xs font-mono text-violet border border-violet/30 animate-pulse-subtle">
+            Available for Freelance
           </span>
         </div>
       </div>
@@ -259,10 +289,10 @@ export default function Hero() {
     z-20
   "
 >
-      <a href="https://github.com/Soniya-hub" target="_blank" className="social-icon">
+      <a href="https://github.com/Soniya-hub" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" className="social-icon">
         <Github className="w-5 h-5" />
       </a>
-      <a href="https://www.linkedin.com/in/soniya-varshney-49071a1b8" target="_blank" className="social-icon">
+      <a href="https://www.linkedin.com/in/soniya-varshney-49071a1b8" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" className="social-icon">
         <Linkedin className="w-5 h-5" />
       </a>
     </div>

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Mail, Github, Linkedin, Copy, Check, Send } from 'lucide-react';
+import { Mail, Github, Linkedin, Copy, Check, Send, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -151,10 +151,19 @@ export default function Contact() {
               <br />
               something great.
             </h2>
-            <p className="text-base text-muted-foreground mb-8 max-w-md">
-              Have a project, opportunity, or just want to chat? I&apos;m open to new roles and
-              collaborations.
+            <p className="text-base text-muted-foreground mb-6 max-w-md">
+              Available for freelance engagements — CRM tools, automation systems, fintech dashboards, SaaS backends, and WordPress sites. Drop me a message and I'll get back within 24 hours.
             </p>
+
+            {/* Freelance Services Pills */}
+            <div className="flex flex-wrap gap-2 mb-8">
+              {['CRM / SaaS', 'Automation', 'Spring Boot APIs', 'React Frontends', 'WordPress'].map((s) => (
+                <span key={s} className="flex items-center gap-1.5 px-3 py-1.5 bg-violet/10 border border-violet/25 rounded-full text-xs font-mono text-violet">
+                  <Zap className="w-3 h-3" />
+                  {s}
+                </span>
+              ))}
+            </div>
 
             {/* Email */}
             <div className="mb-8">
@@ -180,13 +189,14 @@ export default function Contact() {
             {/* Social Links */}
             <div>
               <p className="text-xs font-mono uppercase tracking-wide text-muted-foreground mb-3">
-                Connect
+                Connect & Hire
               </p>
-              <div className="flex gap-3">
+              <div className="flex flex-wrap gap-3">
                 <a
                   href="https://github.com/Soniya-hub"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="GitHub"
                   className="w-12 h-12 flex items-center justify-center rounded-xl bg-card border border-border text-muted-foreground hover:text-violet hover:border-violet/50 transition-all"
                 >
                   <Github className="w-5 h-5" />
@@ -195,9 +205,28 @@ export default function Contact() {
                   href="https://www.linkedin.com/in/soniya-varshney-49071a1b8"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="LinkedIn"
                   className="w-12 h-12 flex items-center justify-center rounded-xl bg-card border border-border text-muted-foreground hover:text-violet hover:border-violet/50 transition-all"
                 >
                   <Linkedin className="w-5 h-5" />
+                </a>
+                <a
+                  href="https://www.upwork.com/freelancers/~soniyavarshney"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Hire on Upwork"
+                  className="h-12 px-4 flex items-center gap-2 rounded-xl bg-card border border-border text-muted-foreground hover:text-violet hover:border-violet/50 transition-all text-xs font-mono"
+                >
+                  Upwork
+                </a>
+                <a
+                  href="https://www.fiverr.com/soniyavarshney"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Hire on Fiverr"
+                  className="h-12 px-4 flex items-center gap-2 rounded-xl bg-card border border-border text-muted-foreground hover:text-violet hover:border-violet/50 transition-all text-xs font-mono"
+                >
+                  Fiverr
                 </a>
               </div>
             </div>
@@ -238,7 +267,7 @@ export default function Contact() {
                     Message
                   </label>
                   <Textarea
-                    placeholder="Tell me about your project..."
+                    placeholder="Tell me about your project — what you need built, your timeline, budget..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="bg-card border-border text-foreground placeholder:text-muted-foreground/50 focus:border-violet focus:ring-violet/20 min-h-[120px] resize-none"
