@@ -251,10 +251,10 @@ export default function Hero() {
 
     {/* ── DESKTOP LAYOUT (hidden on mobile) ── */}
     <div className="hidden lg:block relative z-10 h-full">
-      {/* LEFT CONTENT */}
+      {/* LEFT CONTENT — single flow column, no overlapping absolute positions */}
       <div
         ref={headlineRef}
-        className="absolute left-[7vw] top-[22vh] w-[44vw] max-w-[600px]"
+        className="absolute left-[7vw] top-[18vh] w-[44vw] max-w-[560px]"
       >
         <h1 className="font-heading font-bold text-foreground leading-[0.95] mb-4">
           <span className="word block text-[clamp(36px,6vw,64px)]">Soniya</span>
@@ -263,47 +263,47 @@ export default function Hero() {
         <p className="word text-lg md:text-2xl text-violet font-medium mb-3">
           Senior Software Engineer · Freelance Automation
         </p>
-        <p className="word text-base text-muted-foreground max-w-[420px] leading-relaxed">
+        <p className="word text-base text-muted-foreground max-w-[420px] leading-relaxed mb-8">
           3.5+ years at Optum building Java microservices, Spring Boot backends, and React frontends.
           MBA Finance. I also design end-to-end freelance automation systems — AI proposals,
           client onboarding, and invoice pipelines for startups.
         </p>
-      </div>
 
-      {/* CTA */}
-      <div ref={ctaRef} className="absolute left-[7vw] top-[50vh]">
-        <div className="flex flex-wrap gap-3">
-          <Button
-            onClick={() => scrollToSection('projects')}
-            className="bg-violet hover:bg-violet-dark text-white px-6 py-5 rounded-xl text-sm font-medium"
-          >
-            View My Work
-            <ChevronDown className="ml-2 w-4 h-4" />
-          </Button>
-          <Button
-            onClick={() => scrollToSection('contact')}
-            variant="outline"
-            className="border-violet/40 text-violet hover:bg-violet hover:text-white px-6 py-5 rounded-xl text-sm font-medium transition-all"
-          >
-            Hire Me
-          </Button>
+        {/* CTA */}
+        <div ref={ctaRef} className="mb-5">
+          <div className="flex flex-wrap gap-3">
+            <Button
+              onClick={() => scrollToSection('projects')}
+              className="bg-violet hover:bg-violet-dark text-white px-6 py-5 rounded-xl text-sm font-medium"
+            >
+              View My Work
+              <ChevronDown className="ml-2 w-4 h-4" />
+            </Button>
+            <Button
+              onClick={() => scrollToSection('contact')}
+              variant="outline"
+              className="border-violet/40 text-violet hover:bg-violet hover:text-white px-6 py-5 rounded-xl text-sm font-medium transition-all"
+            >
+              Hire Me
+            </Button>
+          </div>
         </div>
-      </div>
 
-      {/* Pills */}
-      <div ref={pillsRef} className="absolute left-[7vw] top-[60vh] flex gap-3 flex-wrap">
-        <span className="pill px-4 py-2 bg-card rounded-full text-xs font-mono text-muted-foreground border">
-          3.5+ Years · MBA Finance
-        </span>
-        <span className="pill px-4 py-2 bg-violet/10 rounded-full text-xs font-mono text-violet border border-violet/30 animate-pulse-subtle">
-          Available for Freelance
-        </span>
+        {/* Pills */}
+        <div ref={pillsRef} className="flex gap-3 flex-wrap">
+          <span className="pill px-4 py-2 bg-card rounded-full text-xs font-mono text-muted-foreground border">
+            3.5+ Years · MBA Finance
+          </span>
+          <span className="pill px-4 py-2 bg-violet/10 rounded-full text-xs font-mono text-violet border border-violet/30 animate-pulse-subtle">
+            Available for Freelance
+          </span>
+        </div>
       </div>
 
       {/* RIGHT IMAGE */}
       <div
         ref={imageRef}
-        className="absolute right-[7vw] top-[10vh] w-[30vw] h-[78vh] max-w-[400px] max-h-[600px]"
+        className="absolute right-[7vw] top-[8vh] w-[30vw] h-[82vh] max-w-[400px] max-h-[620px]"
       >
         <div className="absolute -inset-[2px] rounded-2xl bg-gradient-to-b from-violet/30 to-transparent" />
         <div className="relative w-full h-full bg-card rounded-2xl card-shadow overflow-hidden">
