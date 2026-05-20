@@ -188,31 +188,31 @@ export default function Hero() {
     </nav>
 
     {/* ── MOBILE LAYOUT (hidden on lg+) ── */}
-    <div className="lg:hidden relative z-10 flex flex-col px-5 pt-20 pb-10">
-      {/* Top row: photo + name */}
-      <div className="flex items-start gap-4 mb-5">
-        <div className="flex-shrink-0 w-[96px] h-[116px] rounded-2xl overflow-hidden ring-1 ring-violet/30 card-shadow">
-          <img src="/hero_portrait.jpg" alt="Soniya Varshney" className="w-full h-full object-cover object-top" />
-        </div>
-        <div className="pt-1">
-          <h1 className="font-heading font-bold text-foreground leading-[0.9] mb-2">
-            <span className="block text-[clamp(30px,9vw,44px)]">Soniya</span>
-            <span className="block text-[clamp(30px,9vw,44px)]">Varshney</span>
-          </h1>
-          <p className="text-xs text-violet font-medium leading-snug">
-            Senior Software Engineer<br />· Freelance Automation
-          </p>
-        </div>
+    <div className="lg:hidden relative z-10 flex flex-col items-center text-center px-6 pt-24 pb-12">
+      {/* Portrait photo — centered, larger */}
+      <div className="w-[140px] h-[170px] rounded-2xl overflow-hidden ring-2 ring-violet/30 card-shadow mb-6">
+        <img src="/hero_portrait.jpg" alt="Soniya Varshney" className="w-full h-full object-cover object-top" />
       </div>
 
+      {/* Name */}
+      <h1 className="font-heading font-bold text-foreground leading-[0.92] mb-3">
+        <span className="block text-[clamp(36px,10vw,52px)]">Soniya</span>
+        <span className="block text-[clamp(36px,10vw,52px)]">Varshney</span>
+      </h1>
+
+      {/* Role */}
+      <p className="text-sm text-violet font-medium mb-4">
+        Senior Software Engineer · Freelance Automation
+      </p>
+
       {/* Bio */}
-      <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+      <p className="text-sm text-muted-foreground leading-relaxed mb-8 max-w-[320px]">
         3.5+ years at Optum building Java microservices, Spring Boot backends, and React frontends.
-        MBA Finance. End-to-end freelance automation — AI proposals, onboarding &amp; invoice pipelines.
+        MBA Finance. I design end-to-end freelance automation systems for startups.
       </p>
 
       {/* CTA buttons */}
-      <div className="flex gap-3 mb-4">
+      <div className="flex gap-3 w-full mb-5">
         <Button
           onClick={() => scrollToSection('projects')}
           className="flex-1 bg-violet hover:bg-violet-dark text-white py-5 rounded-xl text-sm font-medium"
@@ -229,17 +229,17 @@ export default function Hero() {
       </div>
 
       {/* Pills */}
-      <div className="flex gap-2 flex-wrap mb-5">
-        <span className="px-3 py-1.5 bg-card rounded-full text-xs font-mono text-muted-foreground border">
+      <div className="flex gap-2 flex-wrap justify-center mb-6">
+        <span className="px-4 py-2 bg-card rounded-full text-xs font-mono text-muted-foreground border">
           3.5+ Years · MBA Finance
         </span>
-        <span className="px-3 py-1.5 bg-violet/10 rounded-full text-xs font-mono text-violet border border-violet/30 animate-pulse-subtle">
+        <span className="px-4 py-2 bg-violet/10 rounded-full text-xs font-mono text-violet border border-violet/30 animate-pulse-subtle">
           Available for Freelance
         </span>
       </div>
 
       {/* Social links */}
-      <div className="flex gap-4">
+      <div className="flex gap-5">
         <a href="https://github.com/Soniya-hub" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" className="social-icon">
           <Github className="w-5 h-5" />
         </a>
